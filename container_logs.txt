@@ -1,0 +1,25 @@
+INFO:     172.18.0.1:49716 - "GET /docs HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /docs HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /docs HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /docs HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /docs HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /docs HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /docs HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /docs HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /docs HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /docs HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /docs HTTP/1.1" 200 OK
+INFO:     172.18.0.1:49716 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     172.18.0.1:52988 - "POST /items/ HTTP/1.1" 422 Unprocessable Entity
+INFO:     172.18.0.1:53284 - "POST /items/ HTTP/1.1" 201 Created
+INFO:     172.18.0.1:60944 - "POST /items/ HTTP/1.1" 409 Conflict

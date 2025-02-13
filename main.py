@@ -4,13 +4,14 @@ from datetime import datetime
 from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime
 from sqlalchemy.orm import sessionmaker, Session, declarative_base
 from typing import Optional
-import uvicorn
+
 
 # Database setup for PostgreSQL
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:password@localhost:5432/mydatabase"
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:pr0Gramm3r@my_postgres:5432/mydatabase"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
+
 
 # Define the Item model
 class ItemModel(Base):
@@ -23,8 +24,10 @@ class ItemModel(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+
 # Create the database tables
 Base.metadata.create_all(bind=engine)
+
 
 # Dependency to get the database session
 def get_db():
@@ -42,11 +45,13 @@ class ItemCreate(BaseModel):
     price: float = 0.0
     quantity: int = 0
 
+
 class ItemUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
     price: Optional[float] = 0.0
     quantity: Optional[int] = 0
+
 
 class ItemResponse(BaseModel):
     id: int
@@ -56,8 +61,10 @@ class ItemResponse(BaseModel):
     class Config:
         from_attributes = True
 
+
 # FastAPI app
 app = FastAPI()
+
 
 # Create an item
 @app.post("/items/", response_model=ItemResponse, status_code=status.HTTP_201_CREATED)
@@ -66,8 +73,7 @@ def create_item(item: ItemCreate, db: Session = Depends(get_db)):
     db_item = db.query(ItemModel).filter(ItemModel.name == item.name).first()
     if db_item:
         raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail="Item already exists"
+            status_code=status.HTTP_409_CONFLICT, detail="Item already exists"
         )
     # Create the new item
     db_item = ItemModel(name=item.name, description=item.description)
@@ -76,6 +82,7 @@ def create_item(item: ItemCreate, db: Session = Depends(get_db)):
     db.refresh(db_item)
     return db_item
 
+
 # Get an item by ID
 @app.get("/items/{item_id}", response_model=ItemResponse)
 def read_item(item_id: int, db: Session = Depends(get_db)):
@@ -83,6 +90,7 @@ def read_item(item_id: int, db: Session = Depends(get_db)):
     if db_item is None:
         raise HTTPException(status_code=404, detail="Item not found")
     return db_item
+
 
 # Update an item by ID
 @app.put("/items/{item_id}", response_model=ItemResponse)
@@ -97,6 +105,7 @@ def update_item(item_id: int, item: ItemUpdate, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(db_item)
     return db_item
+
 
 # Delete an item by ID
 @app.delete("/items/{item_id}", status_code=status.HTTP_204_NO_CONTENT)
