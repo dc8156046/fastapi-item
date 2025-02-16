@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  fastapi-item:
+    image: fastapiitemsacr.azurecr.io/fastapi-item:latest
+    container_name: fastapi-item
+    ports:
+      - "8000:8000"
+    depends_on:
+      - my_postgres
+    environment:
+      - DATABASE_URL=postgresql://postgres:pr0Gramm3r@my_postgres:5432/mydatabase
+
+  my_postgres:
+    image: postgres:latest
+    container_name: my_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pr0Gramm3r
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
